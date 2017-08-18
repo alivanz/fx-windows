@@ -46,9 +46,10 @@ func (PNPDeviceID PNPDeviceID) LocationInformation() LocationInformation {
   return LocationInformation{ bus,dev,fun }
 }
 func (PNPDeviceID PNPDeviceID) DeviceID() string {
-  start := strings.Index(PNPDeviceID,"DEV_")+4
-  end := strings.Index(PNPDeviceID[start:],"&")
-  return PNPDeviceID[start:end]
+  s := string(PNPDeviceID)
+  start := strings.Index(s,"DEV_")+4
+  end := strings.Index(s[start:],"&")
+  return s[start:end]
 }
 
 func ListVideoController() []VideoController {
