@@ -51,6 +51,12 @@ func (PNPDeviceID PNPDeviceID) DeviceID() string {
   end := strings.Index(s[start:],"&")
   return s[start:start+end]
 }
+func (PNPDeviceID PNPDeviceID) VendorID() string {
+  s := string(PNPDeviceID)
+  start := strings.Index(s,"VEN_")+4
+  end := strings.Index(s[start:],"&")
+  return s[start:start+end]
+}
 
 func ListVideoController() []VideoController {
   var dst []VideoController
